@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const lightModeColors = {
-  background: '#0E8AE8',
+  background: '#9FE9F5',
   text: '#fff',
   hoverbackground: '#0E5CE8',
 };
