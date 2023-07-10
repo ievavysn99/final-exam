@@ -6,8 +6,8 @@ POST http://localhost:5000/api/users
 content-type: application/json
 
 {
-  "name": "John",
-  "surname": "Deer",
-  "email": "John9@example.com",
-  "age": 25
+  "name": "John eee",
+  "surname": "Deddder",
+  "email": "John9@examdfcsdple.com",
+  "age": 60
 }
