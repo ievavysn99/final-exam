@@ -17,3 +17,4 @@ app.use((0, cors_1.default)({ origin: 'http://localhost:5173' }));
 (0, db_1.default)();
 app.listen(PORT, function () { return console.log("Listening on port ".concat(PORT)); });
 app.get('/api/users', user_controllers_1.getAllUsers);
+app.post('/api/users', user_controllers_1.addSingleUser);

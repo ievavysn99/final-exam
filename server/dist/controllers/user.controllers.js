@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsers = void 0;
+exports.addSingleUser = exports.getAllUsers = void 0;
 var user_model_1 = __importDefault(require("../models/user.model"));
 var getAllUsers = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var users, error_1;
@@ -50,6 +50,8 @@ var getAllUsers = function (_req, res) { return __awaiter(void 0, void 0, void 0
                 return [4 /*yield*/, user_model_1.default.find()];
             case 1:
                 users = _a.sent();
+                // res.json(users);
+                res.setHeader('Content-Type', 'application/json');
                 res.json(users);
                 return [3 /*break*/, 3];
             case 2:
@@ -61,3 +63,33 @@ var getAllUsers = function (_req, res) { return __awaiter(void 0, void 0, void 0
     });
 }); };
 exports.getAllUsers = getAllUsers;
+var addSingleUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var data, user, userSaved, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                data = req.body;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                user = new user_model_1.default(data);
+                return [4 /*yield*/, user.save()];
+            case 2:
+                userSaved = _a.sent();
+                if (userSaved) {
+                    res.status(201).json({ message: 'User has been saved', userSaved: userSaved });
+                }
+                else {
+                    res.status(404).json({ message: 'User is not saved' });
+                }
+                return [3 /*break*/, 4];
+            case 3:
+                error_2 = _a.sent();
+                console.log(error_2);
+                res.status(500).json({ message: 'Server error' });
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.addSingleUser = addSingleUser;
