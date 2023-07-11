@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const lightModeColors = {
-  background: '#9FE9F5',
-  text: '#fff',
-  hoverbackground: '#0E5CE8',
+  background: 'var(--primary-color)',
+  text: 'var(--text-color)',
+  hoverbackground: 'var(--hover-color)',
 };
 
 const darkModeColors = {
-  background: '#fff',
-  text: '#0E8AE8',
+  background: 'var(--secondary-color)',
+  text: 'var(--primary-color)',
   hoverbackground: '#eee',
 };
 
@@ -20,9 +20,10 @@ export const StyledButton = styled.button`
   color: ${(props) =>
     props.mode === 'dark' ? darkModeColors.text : lightModeColors.text};
   border: none;
-  padding: 5px 10px;
+  padding: 8px 13px;
   border-radius: 8px;
   font-size: 16px;
+  max-width: 300px;
 
   &:hover {
     background-color: ${(props) =>
