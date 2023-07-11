@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 const lightModeColors = {
-  background: '#0E8AE8',
-  text: '#fff',
+  background: 'var(--primary-color)',
+  text: 'var(--text-color)',
   hoverbackground: '#85AADE',
 };
 
 const darkModeColors = {
   background: '#fff',
-  text: '#0E8AE8',
+  text: 'var(--primary-color)',
   hoverbackground: '#eee',
 };
 

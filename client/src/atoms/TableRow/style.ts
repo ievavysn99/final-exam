@@ -31,11 +31,12 @@ export const StyledRowContainer = styled.div`
   text-align: center;
   font-size: 18px;
   align-items: center;
-  color: #fff;
+  color: var(--text-color);
 
   button {
     align-self: center;
     width: 300px;
+    margin: 5px;
   }
 
   @media (min-width: 600px) {
@@ -50,5 +51,11 @@ export const StyledRowContainer = styled.div`
       background-color: #29aaec;
       border-radius: 15px;
     }
+  }
+`;
+
+export const StyledButtonContainer = styled.div`
+  @media (min-width: 600px) {
+    width: 30%;
   }
 `;

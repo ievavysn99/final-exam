@@ -13,7 +13,7 @@ export const StyledHeadingContainer = styled.div`
     font-size: 18px;
     font-weight: bold;
     padding-bottom: 10px;
-    color: #fff;
+    color: var(--text-color);
   }
 `;
 
@@ -21,6 +21,6 @@ export const StyledLine = styled.hr`
   display: none;
   @media (min-width: 600px) {
     display: block;
-    border: 1px solid #fff;
+    border: 1px solid var(--text-color);
   }
 `;

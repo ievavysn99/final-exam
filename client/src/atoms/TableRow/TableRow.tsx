@@ -1,6 +1,7 @@
 import { IUser } from '../../../../server/src/models/user.model';
 import Button from '../Button';
 import {
+  StyledButtonContainer,
   StyledContainer,
   StyledRowContainer,
   StyledRowInfoContainer,
@@ -21,8 +22,10 @@ const TableRow = ({ data }: ITableRowProps) => {
             <div>{user.email}</div>
             <div>{user.age}</div>
           </StyledRowInfoContainer>
-          <Button mode='dark' content='Redaguoti' />
-          <Button mode='dark' content='Ištrinti' />
+          <StyledButtonContainer>
+            <Button mode='dark' content='Redaguoti' />
+            <Button mode='dark' content='Ištrinti' />
+          </StyledButtonContainer>
         </StyledRowContainer>
       ))}
     </StyledContainer>

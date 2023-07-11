@@ -3,4 +3,7 @@
 :root {
   font-family: 'Roboto Mono', monospace;
   line-height: 1.5;
+  --primary-color: #0e8ae8;
+  --secondary-color: #fff;
+  --text-color: #fff;
 }

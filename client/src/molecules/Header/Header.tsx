@@ -12,13 +12,15 @@ const Header = ({ setShowForm }: IHeaderProps) => {
 
   return (
     <StyledHeader>
-      <h1>Dalyvių sistema</h1>
-      <Button
-        mode='dark'
-        content='Pridėti naują'
-        onClick={addUser}
-        className='add-user-button'
-      ></Button>
+      <div>
+        <h1>Dalyvių sistema</h1>
+        <Button
+          mode='dark'
+          content='Pridėti naują'
+          onClick={addUser}
+          className='add-user-button'
+        ></Button>
+      </div>
     </StyledHeader>
   );
 };

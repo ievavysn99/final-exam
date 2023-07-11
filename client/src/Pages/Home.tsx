@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Button from '../atoms/Button';
 import Pagination from '../atoms/Pagination/Pagination';
 import TableHeading from '../atoms/TableHeading';
 import TableRow from '../atoms/TableRow';
+import Footer from '../molecules/Footer/Footer';
 import FormContainer from '../molecules/FormContainer';
 import Header from '../molecules/Header';
 import { StyledPage, StyledTableContainer } from './style';
@@ -12,7 +12,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  const itemsPerPage = 7;
+  const itemsPerPage = 5;
 
   const handleShowForm = (value: boolean) => {
     setShowForm(value);
@@ -68,6 +68,7 @@ const Home = () => {
           onPageChange={handlePageChange}
         />
       </StyledPage>
+      <Footer></Footer>
     </>
   );
 };
