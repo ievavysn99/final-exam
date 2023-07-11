@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addSingleUser = exports.getAllUsers = void 0;
+exports.deleteSingleUser = exports.updateSingleUser = exports.addSingleUser = exports.getAllUsers = void 0;
 var user_model_1 = __importDefault(require("../models/user.model"));
 var getAllUsers = function (_req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var users, error_1;
@@ -93,3 +93,70 @@ var addSingleUser = function (req, res) { return __awaiter(void 0, void 0, void 
     });
 }); };
 exports.addSingleUser = addSingleUser;
+var updateSingleUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, data, userToBeUpdated, updatedCar, error_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                id = req.params.id;
+                data = req.body;
+                console.log(id);
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 6, , 7]);
+                return [4 /*yield*/, user_model_1.default.findById(id)];
+            case 2:
+                userToBeUpdated = _a.sent();
+                if (!!userToBeUpdated) return [3 /*break*/, 3];
+                res.status(404).json({ message: 'User with given id not found' });
+                return [3 /*break*/, 5];
+            case 3: return [4 /*yield*/, user_model_1.default.findByIdAndUpdate(id, data)];
+            case 4:
+                updatedCar = _a.sent();
+                if (updatedCar) {
+                    res.status(201).json({ message: 'User updated' });
+                }
+                else {
+                    res.status(404).json({ message: 'User not updated' });
+                }
+                _a.label = 5;
+            case 5: return [3 /*break*/, 7];
+            case 6:
+                error_3 = _a.sent();
+                console.log(error_3);
+                res.status(500).json({ message: 'Server error' });
+                return [3 /*break*/, 7];
+            case 7: return [2 /*return*/];
+        }
+    });
+}); };
+exports.updateSingleUser = updateSingleUser;
+var deleteSingleUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, deletedUser, error_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                id = req.params.id;
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, user_model_1.default.findByIdAndDelete(id)];
+            case 2:
+                deletedUser = _a.sent();
+                if (deletedUser) {
+                    res.json({ message: 'User deleted' });
+                }
+                else {
+                    res.status(404).json({ message: 'User not deleted. Invalid user id' });
+                }
+                return [3 /*break*/, 4];
+            case 3:
+                error_4 = _a.sent();
+                console.log(error_4);
+                res.status(500).json({ message: 'Server error' });
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+exports.deleteSingleUser = deleteSingleUser;

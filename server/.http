@@ -11,3 +11,17 @@ content-type: application/json
   "email": "John9@examdfcsdple.com",
   "age": 60
 }
+
+###
+PUT http://localhost:5000/api/users/64ac0894f64062f3fb8ea489
+content-type: application/json
+
+{
+  "name": "John",
+  "surname": "A",
+  "email": "JohnA9@examdfcsdple.com",
+  "age": 60
+}
+
+###
+DELETE http://localhost:5000/api/users/64ac0879f64062f3fb8ea485

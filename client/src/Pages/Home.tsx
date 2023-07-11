@@ -173,12 +173,12 @@ const Home = () => {
   };
 
   const handleOutsideClick = (e: MouseEvent) => {
-    if (
-      formContainerRef.current &&
-      !formContainerRef.current.contains(e.target)
-    ) {
-      setShowForm(false);
-    }
+    // if (
+    //   formContainerRef.current &&
+    //   !formContainerRef.current.contains(e.target)
+    // ) {
+    //   setShowForm(false);
+    // }
   };
 
   useEffect(() => {
