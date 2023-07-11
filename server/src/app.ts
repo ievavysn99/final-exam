@@ -1,8 +1,13 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import dbConnection from './config/db';
-import { getAllUsers, addSingleUser } from './controllers/user.controllers';
+import {
+  getAllUsers,
+  addSingleUser,
+  updateSingleUser,
+  deleteSingleUser,
+} from './controllers/user.controllers';
 
 const app: Express = express();
 dotenv.config();
@@ -18,3 +23,5 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 app.get('/api/users', getAllUsers);
 app.post('/api/users', addSingleUser);
+app.put('/api/users/:id', updateSingleUser);
+app.delete('/api/users/:id', deleteSingleUser);

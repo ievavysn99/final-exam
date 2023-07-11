@@ -18,3 +18,5 @@ app.use((0, cors_1.default)({ origin: 'http://localhost:5173' }));
 app.listen(PORT, function () { return console.log("Listening on port ".concat(PORT)); });
 app.get('/api/users', user_controllers_1.getAllUsers);
 app.post('/api/users', user_controllers_1.addSingleUser);
+app.put('/api/users/:id', user_controllers_1.updateSingleUser);
+app.delete('/api/users/:id', user_controllers_1.deleteSingleUser);
