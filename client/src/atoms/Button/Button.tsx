@@ -10,7 +10,12 @@ interface IButtonProps {
 
 const Button = ({ type, mode, content, onClick, className }: IButtonProps) => {
   return (
-    <StyledButton class={className} type={type} mode={mode} onClick={onClick}>
+    <StyledButton
+      className={className}
+      type={type}
+      mode={mode}
+      onClick={onClick}
+    >
       {content}
     </StyledButton>
   );

@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const StyledFooter = styled.footer`
-  margin: -8px;
-  background-color: var(--primary-color);
+  margin: 0 -8px -8px -8px;
+  background-color: var(--hf-color);
   height: 25px;
   padding: 10px;
   display: flex;

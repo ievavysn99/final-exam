@@ -48,7 +48,7 @@ export const StyledRowContainer = styled.div`
     }
 
     &:hover {
-      background-color: #29aaec;
+      background-color: var(--hover-color);
       border-radius: 15px;
     }
   }

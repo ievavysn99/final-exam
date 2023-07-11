@@ -1,9 +1,162 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+// import Modal from '../atoms/Modal/Modal';
+// import Pagination from '../atoms/Pagination/Pagination';
+// import TableHeading from '../atoms/TableHeading';
+// import TableRow from '../atoms/TableRow';
+// import Footer from '../molecules/Footer/Footer';
+// import FormContainer from '../molecules/AddFormContainer';
+// import Header from '../molecules/Header';
+// import { StyledPage, StyledTableContainer } from './style';
+
+// const Home = () => {
+//   const [data, setData] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [totalItems, setTotalItems] = useState(0);
+//   const [showForm, setShowForm] = useState(false);
+//   const itemsPerPage = 5;
+
+//   const handleShowForm = (value: boolean) => {
+//     setShowForm(value);
+//   };
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch('http://localhost:5000/api/users');
+//         if (!response.ok) {
+//           throw new Error('Failed to fetch data');
+//         }
+//         const responseData = await response.json();
+//         setData(responseData);
+//         setTotalItems(responseData.length); // Update this line
+//       } catch (error) {
+//         console.error('Error:', error);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const handlePageChange = (page: number) => {
+//     setCurrentPage(page);
+//   };
+
+//   return (
+//     <>
+//       <Header setShowForm={handleShowForm} />
+//       <StyledPage>
+//         {showForm && (
+//           <Modal>
+//             <FormContainer />
+//           </Modal>
+//         )}
+//         <StyledTableContainer>
+//           <TableHeading></TableHeading>
+//           <TableRow
+//             data={data.slice(
+//               (currentPage - 1) * itemsPerPage,
+//               currentPage * itemsPerPage
+//             )}
+//           />
+//         </StyledTableContainer>
+//         <Pagination
+//           totalItems={totalItems}
+//           itemsPerPage={itemsPerPage}
+//           onPageChange={handlePageChange}
+//         />
+//       </StyledPage>
+//       <Footer></Footer>
+//     </>
+//   );
+// };
+
+// export default Home;
+
+// // import { useEffect, useState } from 'react';
+// // import Modal from '../atoms/Modal/Modal';
+// // import Pagination from '../atoms/Pagination/Pagination';
+// // import TableHeading from '../atoms/TableHeading';
+// // import TableRow from '../atoms/TableRow';
+// // import Footer from '../molecules/Footer/Footer';
+// // import FormContainer from '../molecules/FormContainer';
+// // import Header from '../molecules/Header';
+// // import { StyledPage, StyledTableContainer } from './style';
+
+// // const Home = () => {
+// //   const [data, setData] = useState([]);
+// //   const [currentPage, setCurrentPage] = useState(1);
+// //   const [totalItems, setTotalItems] = useState(0);
+// //   const [showForm, setShowForm] = useState(false);
+// //   const itemsPerPage = 5;
+
+// //   useEffect(() => {
+// //     const fetchData = async () => {
+// //       try {
+// //         const response = await fetch('http://localhost:5000/api/users');
+// //         if (!response.ok) {
+// //           throw new Error('Failed to fetch data');
+// //         }
+// //         const responseData = await response.json();
+// //         setData(responseData);
+// //         setTotalItems(responseData.length);
+// //       } catch (error) {
+// //         console.error('Error:', error);
+// //       }
+// //     };
+
+// //     fetchData();
+// //   }, []);
+
+// //   const handleShowForm = () => {
+// //     setShowForm(true);
+// //   };
+
+// //   const handleCloseForm = () => {
+// //     setShowForm(false);
+// //   };
+
+// //   const handlePageChange = (page: number) => {
+// //     setCurrentPage(page);
+// //   };
+
+// //   return (
+// //     <>
+// //       <Header onAddUser={handleShowForm} />
+// //       <StyledPage>
+// //         {showForm && (
+// //           <Modal onClose={handleCloseForm}>
+// //             <FormContainer />
+// //           </Modal>
+// //         )}
+// //         <StyledTableContainer>
+// //           <TableHeading></TableHeading>
+// //           <TableRow
+// //             data={data.slice(
+// //               (currentPage - 1) * itemsPerPage,
+// //               currentPage * itemsPerPage
+// //             )}
+// //           />
+// //         </StyledTableContainer>
+// //         <Pagination
+// //           totalItems={totalItems}
+// //           itemsPerPage={itemsPerPage}
+// //           onPageChange={handlePageChange}
+// //         />
+// //       </StyledPage>
+// //       <Footer></Footer>
+// //     </>
+// //   );
+// // };
+
+// // export default Home;
+
+import { useEffect, useState, useRef } from 'react';
+import Modal from '../atoms/Modal/Modal';
 import Pagination from '../atoms/Pagination/Pagination';
 import TableHeading from '../atoms/TableHeading';
 import TableRow from '../atoms/TableRow';
 import Footer from '../molecules/Footer/Footer';
-import FormContainer from '../molecules/FormContainer';
+import FormContainer from '../molecules/AddFormContainer';
 import Header from '../molecules/Header';
 import { StyledPage, StyledTableContainer } from './style';
 
@@ -13,9 +166,19 @@ const Home = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const itemsPerPage = 5;
+  const formContainerRef = useRef(null);
 
   const handleShowForm = (value: boolean) => {
     setShowForm(value);
+  };
+
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (
+      formContainerRef.current &&
+      !formContainerRef.current.contains(e.target)
+    ) {
+      setShowForm(false);
+    }
   };
 
   useEffect(() => {
@@ -40,19 +203,25 @@ const Home = () => {
     setCurrentPage(page);
   };
 
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
-      {/* <h1>Dalyvių sistema</h1>
-        <Button
-          mode='dark'
-          content='Pridėti naują'
-          onClick={addUser}
-          className='add-user-button'
-        ></Button> */}
-
       <Header setShowForm={handleShowForm} />
       <StyledPage>
-        {showForm && <FormContainer />}
+        {showForm && (
+          <Modal onClick={handleOutsideClick}>
+            <div ref={formContainerRef}>
+              <FormContainer />
+            </div>
+          </Modal>
+        )}
         <StyledTableContainer>
           <TableHeading></TableHeading>
           <TableRow

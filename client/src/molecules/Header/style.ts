@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const StyledHeader = styled.header`
-  margin: -8px;
-  background-color: var(--primary-color);
+  margin: -8px -8px 0 -8px;
+  background-color: var(--hf-color);
   height: 40px;
   padding: 10px;
   display: flex;

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { StyledPaginationButton } from './style';
+import { StyledPaginationButton, StyledPaginationContainer } from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 interface IPaginationProps {
   totalItems: number;
@@ -24,7 +26,6 @@ const Pagination = ({
   const renderPaginationNumbers = () => {
     const paginationNumbers = [];
 
-    // Calculate the start and end page numbers based on the current page
     let startPage = 1;
     let endPage = totalPages;
 
@@ -86,68 +87,29 @@ const Pagination = ({
     return paginationNumbers;
   };
 
-  //   return (
-  //     <ul className='pagination'>
-  //       <li
-  //         className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
-  //         onClick={() => handlePageChange(currentPage - 1)}
-  //       >
-  //         Ankstesnis
-  //       </li>
-  //       {renderPaginationNumbers()}
-  //       <li
-  //         className={`pagination-item ${
-  //           currentPage === totalPages ? 'disabled' : ''
-  //         }`}
-  //         onClick={() => handlePageChange(currentPage + 1)}
-  //       >
-  //         Kitas
-  //       </li>
-  //     </ul>
-  //   );
   return (
-    <ul className='pagination'>
+    <StyledPaginationContainer className='pagination'>
       {currentPage !== 1 && (
-        <li
+        <div
           className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
           onClick={() => handlePageChange(currentPage - 1)}
         >
-          Ankstesnis
-        </li>
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </div>
       )}
       {renderPaginationNumbers()}
       {currentPage !== totalPages && (
-        <li
+        <div
           className={`pagination-item ${
             currentPage === totalPages ? 'disabled' : ''
           }`}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          Kitas
-        </li>
+          <FontAwesomeIcon icon={faAngleRight} />
+        </div>
       )}
-    </ul>
+    </StyledPaginationContainer>
   );
 };
 
 export default Pagination;
-
-//WORKS
-//   const renderPaginationNumbers = () => {
-//     const paginationNumbers = [];
-
-//     for (let i = 1; i <= totalPages; i++) {
-//       paginationNumbers.push(
-//         <button
-//           key={i}
-//           className={currentPage === i ? 'active' : ''}
-//           onClick={() => handlePageChange(i)}
-//         >
-//           {i}
-//         </button>
-//       );
-//     }
-
-//     return paginationNumbers;
-//   };
-//WORKS

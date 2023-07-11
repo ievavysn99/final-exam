@@ -3,11 +3,11 @@ import styled from 'styled-components';
 const lightModeColors = {
   background: 'var(--primary-color)',
   text: 'var(--text-color)',
-  hoverbackground: '#85AADE',
+  hoverbackground: 'var(--hover-color)',
 };
 
 const darkModeColors = {
-  background: '#fff',
+  background: 'var(--secondary-color)',
   text: 'var(--primary-color)',
   hoverbackground: '#eee',
 };
