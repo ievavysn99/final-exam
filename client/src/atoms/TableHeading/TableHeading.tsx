@@ -1,11 +1,13 @@
+import { StyledHeadingContainer } from './style';
+
 const TableHeading = () => {
   return (
-    <div>
+    <StyledHeadingContainer>
       <div>Vardas</div>
       <div>Pavardė</div>
       <div>El. paštas</div>
       <div>Amžius</div>
-    </div>
+    </StyledHeadingContainer>
   );
 };
 
