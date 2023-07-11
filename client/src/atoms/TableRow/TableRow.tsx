@@ -1,6 +1,10 @@
 import { IUser } from '../../../../server/src/models/user.model';
 import Button from '../Button';
-import { StyledRowContainer } from './style';
+import {
+  StyledContainer,
+  StyledRowContainer,
+  StyledRowInfoContainer,
+} from './style';
 
 interface ITableRowProps {
   data: IUser[];
@@ -8,18 +12,20 @@ interface ITableRowProps {
 
 const TableRow = ({ data }: ITableRowProps) => {
   return (
-    <div>
+    <StyledContainer>
       {data.map((user) => (
         <StyledRowContainer key={user.id}>
-          <div>{user.name}</div>
-          <div>{user.surname}</div>
-          <div>{user.email}</div>
-          <div>{user.age}</div>
+          <StyledRowInfoContainer>
+            <div>{user.name}</div>
+            <div>{user.surname}</div>
+            <div>{user.email}</div>
+            <div>{user.age}</div>
+          </StyledRowInfoContainer>
           <Button mode='dark' content='Redaguoti' />
           <Button mode='dark' content='Ištrinti' />
         </StyledRowContainer>
       ))}
-    </div>
+    </StyledContainer>
   );
 };
 

@@ -4,14 +4,19 @@ import Pagination from '../atoms/Pagination/Pagination';
 import TableHeading from '../atoms/TableHeading';
 import TableRow from '../atoms/TableRow';
 import FormContainer from '../molecules/FormContainer';
-import { StyledTableContainer } from './style';
+import Header from '../molecules/Header';
+import { StyledPage, StyledTableContainer } from './style';
 
 const Home = () => {
-  const [showForm, setShowForm] = useState(false);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
-  const itemsPerPage = 5;
+  const [showForm, setShowForm] = useState(false);
+  const itemsPerPage = 7;
+
+  const handleShowForm = (value: boolean) => {
+    setShowForm(value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,32 +36,38 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const addUser = () => {
-    setShowForm(true);
-  };
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
     <>
-      <Button mode='light' content='Pridėti naują' onClick={addUser}></Button>
-      {showForm && <FormContainer />}
-      <StyledTableContainer>
-        <TableHeading></TableHeading>
-        <TableRow
-          data={data.slice(
-            (currentPage - 1) * itemsPerPage,
-            currentPage * itemsPerPage
-          )}
+      {/* <h1>Dalyvių sistema</h1>
+        <Button
+          mode='dark'
+          content='Pridėti naują'
+          onClick={addUser}
+          className='add-user-button'
+        ></Button> */}
+
+      <Header setShowForm={handleShowForm} />
+      <StyledPage>
+        {showForm && <FormContainer />}
+        <StyledTableContainer>
+          <TableHeading></TableHeading>
+          <TableRow
+            data={data.slice(
+              (currentPage - 1) * itemsPerPage,
+              currentPage * itemsPerPage
+            )}
+          />
+        </StyledTableContainer>
+        <Pagination
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+          onPageChange={handlePageChange}
         />
-      </StyledTableContainer>
-      <Pagination
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-        onPageChange={handlePageChange}
-      />
+      </StyledPage>
     </>
   );
 };

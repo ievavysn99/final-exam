@@ -5,11 +5,12 @@ interface IButtonProps {
   mode: string;
   content: string;
   onClick?: () => void;
+  className?: string;
 }
 
-const Button = ({ type, mode, content, onClick }: IButtonProps) => {
+const Button = ({ type, mode, content, onClick, className }: IButtonProps) => {
   return (
-    <StyledButton type={type} mode={mode} onClick={onClick}>
+    <StyledButton class={className} type={type} mode={mode} onClick={onClick}>
       {content}
     </StyledButton>
   );
