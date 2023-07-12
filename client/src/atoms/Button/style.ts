@@ -13,8 +13,21 @@ export const StyledButton = styled.button`
   border-radius: 0.375rem;
   transition: background-color 0.15s ease-in-out;
 
+  &.ok-button {
+    width: 100px;
+    margin: 0 auto;
+  }
+
   &.cancel {
     background-color: #6c757d;
+  }
+
+  &.success {
+    background-color: #28a745;
+  }
+
+  &.danger {
+    background-color: #dc3545;
   }
 
   &:hover {
@@ -22,6 +35,14 @@ export const StyledButton = styled.button`
 
     &.cancel {
       background-color: #343a40;
+    }
+
+    &.success {
+      background-color: #218838;
+    }
+
+    &.danger {
+      background-color: #c82333;
     }
   }
 `;

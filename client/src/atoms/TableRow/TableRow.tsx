@@ -4,6 +4,8 @@ import Button from '../Button';
 import {
   StyledButtonContainer,
   StyledContainer,
+  StyledDeleteButtonContainer,
+  StyledEditable,
   StyledRowContainer,
   StyledRowInfoContainer,
 } from './style';
@@ -16,6 +18,9 @@ interface ITableRowProps {
 
 const TableRow = ({ data, onEditUser, onDeleteUser }: ITableRowProps) => {
   const [userData, setUserData] = useState<IUser[]>([]);
+  const [deleteConfirmation, setDeleteConfirmation] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     setUserData(data);
@@ -62,6 +67,21 @@ const TableRow = ({ data, onEditUser, onDeleteUser }: ITableRowProps) => {
     );
   };
 
+  const handleDeleteClick = (userId: string) => {
+    setDeleteConfirmation(userId);
+  };
+
+  const handleConfirmDelete = () => {
+    if (deleteConfirmation) {
+      onDeleteUser(deleteConfirmation);
+      setDeleteConfirmation(null);
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setDeleteConfirmation(null);
+  };
+
   return (
     <StyledContainer>
       {userData.map((user) => (
@@ -69,42 +89,42 @@ const TableRow = ({ data, onEditUser, onDeleteUser }: ITableRowProps) => {
           <StyledRowInfoContainer>
             {user.isEditing ? (
               <>
-                <div
+                <StyledEditable
                   contentEditable
                   suppressContentEditableWarning
-                  onBlur={(e) =>
+                  onBlur={(e: { target: { innerText: string } }) =>
                     handleContentChange(user._id, 'name', e.target.innerText)
                   }
                 >
                   {user.name}
-                </div>
-                <div
+                </StyledEditable>
+                <StyledEditable
                   contentEditable
                   suppressContentEditableWarning
-                  onBlur={(e) =>
+                  onBlur={(e: { target: { innerText: string } }) =>
                     handleContentChange(user._id, 'surname', e.target.innerText)
                   }
                 >
                   {user.surname}
-                </div>
-                <div
+                </StyledEditable>
+                <StyledEditable
                   contentEditable
                   suppressContentEditableWarning
-                  onBlur={(e) =>
+                  onBlur={(e: { target: { innerText: string } }) =>
                     handleContentChange(user._id, 'email', e.target.innerText)
                   }
                 >
                   {user.email}
-                </div>
-                <div
+                </StyledEditable>
+                <StyledEditable
                   contentEditable
                   suppressContentEditableWarning
-                  onBlur={(e) =>
+                  onBlur={(e: { target: { innerText: string } }) =>
                     handleContentChange(user._id, 'age', e.target.innerText)
                   }
                 >
                   {user.age}
-                </div>
+                </StyledEditable>
               </>
             ) : (
               <>
@@ -115,28 +135,51 @@ const TableRow = ({ data, onEditUser, onDeleteUser }: ITableRowProps) => {
               </>
             )}
           </StyledRowInfoContainer>
-          <StyledButtonContainer>
-            {user.isEditing ? (
-              <>
-                <Button
-                  content='Išsaugoti'
-                  onClick={() => handleSaveClick(user._id, user)}
-                />
-                <Button
-                  content='Atšaukti'
-                  onClick={() => handleCancelClick(user._id)}
-                />
-              </>
+          <StyledButtonContainer className='delete-or-cancel'>
+            {deleteConfirmation === user._id ? (
+              <StyledDeleteButtonContainer>
+                <div>Ar tikrai norite ištrinti?</div>
+                <div className='buttons'>
+                  <Button
+                    content='Taip'
+                    className='danger'
+                    onClick={handleConfirmDelete}
+                  />
+                  <Button
+                    content='Atšaukti'
+                    className='cancel'
+                    onClick={handleCancelDelete}
+                  />
+                </div>
+              </StyledDeleteButtonContainer>
             ) : (
               <>
-                <Button
-                  content='Redaguoti'
-                  onClick={() => handleEditClick(user._id)}
-                />
-                <Button
-                  content='Ištrinti'
-                  onClick={() => onDeleteUser(user._id)}
-                />
+                {user.isEditing ? (
+                  <>
+                    <Button
+                      content='Išsaugoti'
+                      className='success'
+                      onClick={() => handleSaveClick(user._id, user)}
+                    />
+                    <Button
+                      content='Atšaukti'
+                      className='cancel'
+                      onClick={() => handleCancelClick(user._id)}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      content='Redaguoti'
+                      onClick={() => handleEditClick(user._id)}
+                    />
+                    <Button
+                      content='Ištrinti'
+                      className='danger'
+                      onClick={() => handleDeleteClick(user._id)}
+                    />
+                  </>
+                )}
               </>
             )}
           </StyledButtonContainer>

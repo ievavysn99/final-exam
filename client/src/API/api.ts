@@ -25,4 +25,15 @@ export const updateUser = async (userId: string, updatedUser: IUser) => {
   }
 };
 
-export default fetchUserData;
+export const deleteUser = async (userId: string) => {
+  try {
+    const response = await axios.delete(
+      `http://localhost:5000/api/users/${userId}`
+    );
+    console.log('User deleted successfully');
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    throw error;
+  }
+};

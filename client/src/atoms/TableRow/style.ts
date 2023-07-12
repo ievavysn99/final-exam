@@ -7,13 +7,13 @@ export const StyledRowInfoContainer = styled.div`
   flex-direction: column;
 
   @media (min-width: 600px) {
-    padding: 0.75rem;
+    margin: 0.75rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
     width: 70%;
 
     div {
-      padding: 0.75rem;
+      margin: 0.75rem;
       max-width: 200px;
       overflow-wrap: break-word;
       word-wrap: break-word;
@@ -57,5 +57,22 @@ export const StyledButtonContainer = styled.div`
     justify-content: center;
     text-align: center;
     width: 30%;
+  }
+`;
+
+export const StyledDeleteButtonContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+
+  div &.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+export const StyledEditable = styled.div`
+  background-color: #eee;
+  &:focus {
+    outline: none;
   }
 `;
