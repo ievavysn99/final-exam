@@ -1,6 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IUser extends Document {
+  isEditing: any;
   map(arg0: unknown): unknown;
   id?: string;
   name: string;

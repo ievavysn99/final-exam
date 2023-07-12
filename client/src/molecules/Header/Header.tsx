@@ -15,7 +15,6 @@ const Header = ({ setShowForm }: IHeaderProps) => {
       <div>
         <h1>Dalyvių sistema</h1>
         <Button
-          mode='dark'
           content='Pridėti naują'
           onClick={addUser}
           className='add-user-button'

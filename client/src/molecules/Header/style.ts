@@ -1,13 +1,11 @@
 import { styled } from 'styled-components';
 
 export const StyledHeader = styled.header`
-  margin: -8px -8px 0 -8px;
-  background-color: var(--hf-color);
   height: 40px;
   padding: 10px;
   display: flex;
   align-items: center;
-  border-radius: 0 0 15px 15px;
+  color: #212529;
 
   div {
     width: 90%;
@@ -18,7 +16,7 @@ export const StyledHeader = styled.header`
     margin: 0 auto;
 
     h1 {
-      color: var(--text-color);
+      color: #212529;
     }
   }
 `;
