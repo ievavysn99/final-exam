@@ -7,6 +7,7 @@ interface IPaginationProps {
   totalItems: number;
   itemsPerPage: number;
   onPageChange: (page: number) => void;
+  currentPage: number;
 }
 
 const Pagination = ({
@@ -47,12 +48,16 @@ const Pagination = ({
           className={currentPage === 1 ? 'active' : ''}
           onClick={() => handlePageChange(1)}
         >
-          1
+          <a href='#'>1</a>
         </StyledPaginationButton>
       );
 
       if (startPage > 2) {
-        paginationNumbers.push(<span key='ellipsis-start'>...</span>);
+        paginationNumbers.push(
+          <StyledPaginationButton>
+            <a href='#'>...</a>
+          </StyledPaginationButton>
+        );
       }
     }
 
@@ -63,14 +68,18 @@ const Pagination = ({
           className={currentPage === i ? 'active' : ''}
           onClick={() => handlePageChange(i)}
         >
-          {i}
+          <a href='#'> {i}</a>
         </StyledPaginationButton>
       );
     }
 
     if (endPage < totalPages) {
       if (endPage < totalPages - 1) {
-        paginationNumbers.push(<span key='ellipsis-end'>...</span>);
+        paginationNumbers.push(
+          <StyledPaginationButton>
+            <a href='#'>...</a>
+          </StyledPaginationButton>
+        );
       }
 
       paginationNumbers.push(
@@ -79,7 +88,7 @@ const Pagination = ({
           className={currentPage === totalPages ? 'active' : ''}
           onClick={() => handlePageChange(totalPages)}
         >
-          {totalPages}
+          <a href='#'>{totalPages}</a>
         </StyledPaginationButton>
       );
     }
@@ -90,23 +99,29 @@ const Pagination = ({
   return (
     <StyledPaginationContainer className='pagination'>
       {currentPage !== 1 && (
-        <div
+        <StyledPaginationButton
           className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
           onClick={() => handlePageChange(currentPage - 1)}
         >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </div>
+          <a href='#'>
+            {' '}
+            <FontAwesomeIcon icon={faAngleLeft} />
+          </a>
+        </StyledPaginationButton>
       )}
       {renderPaginationNumbers()}
       {currentPage !== totalPages && (
-        <div
+        <StyledPaginationButton
           className={`pagination-item ${
             currentPage === totalPages ? 'disabled' : ''
           }`}
           onClick={() => handlePageChange(currentPage + 1)}
         >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </div>
+          <a href='#'>
+            {' '}
+            <FontAwesomeIcon icon={faAngleRight} />
+          </a>
+        </StyledPaginationButton>
       )}
     </StyledPaginationContainer>
   );

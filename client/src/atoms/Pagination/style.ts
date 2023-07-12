@@ -1,27 +1,36 @@
 import styled from 'styled-components';
 
-export const StyledPaginationButton = styled.button`
-  background-color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  border-radius: 5px;
-  color: white;
-  padding: 5px;
+export const StyledPaginationButton = styled.li`
+  list-style: none;
+  display: flex;
 
-  &.active {
-    border: 2px solid black;
-    background-color: var(--selected-button-color);
+  a {
+    position: relative;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    color: #6ea8fe;
+    text-decoration: none;
+    border-right: 1px solid #495057;
   }
 
-  &:hover {
-    cursor: pointer;
-    background-color: var(--hover-color);
+  &.active {
+    background-color: #0d6efd;
+    a {
+      color: #fff;
+    }
+  }
+
+  &:last-child {
+    a {
+      border-right: none;
+    }
   }
 `;
 
-export const StyledPaginationContainer = styled.div`
+export const StyledPaginationContainer = styled.ul`
   display: flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--primary-color);
-  cursor: pointer;
+  border: 1px solid #495057;
+  border-radius: 0.375rem;
+  padding-inline-start: 0;
+  overflow: hidden;
 `;

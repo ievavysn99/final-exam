@@ -2,10 +2,19 @@ import { useState } from 'react';
 import axios from 'axios';
 import Button from '../../atoms/Button';
 import Modal from '../../atoms/Modal/Modal';
-import { StyledFormContainer, StyledFormItem, StyledWrapper } from './style';
+import {
+  StyledFormContainer,
+  StyledFormItem,
+  StyledUserSavedContainer,
+  StyledWrapper,
+} from './style';
 import Input from '../../atoms/Input';
 
-const AddFormContainer = () => {
+interface IAddFormContainerProps {
+  onCancel: () => void;
+}
+
+const AddFormContainer = ({ onCancel }: IAddFormContainerProps) => {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -44,8 +53,23 @@ const AddFormContainer = () => {
     setAge('');
   };
 
+  const handleCancel = () => {
+    onCancel();
+  };
+
   if (submitted) {
-    return <Modal>Vartotojas pridėtas sėkmingai</Modal>; // Render the success message
+    return (
+      <Modal>
+        <StyledUserSavedContainer>
+          Vartotojas pridėtas sėkmingai
+          <Button
+            content='Uždaryti'
+            className='cancel'
+            onClick={handleCancel}
+          />
+        </StyledUserSavedContainer>
+      </Modal>
+    );
   }
 
   return (
@@ -85,13 +109,17 @@ const AddFormContainer = () => {
                 onChange={(e) => setAge(e.target.value)}
               />
             </StyledFormItem>
+            <Button
+              content='Atšaukti'
+              className='cancel'
+              onClick={handleCancel}
+            />
+            <Button
+              type='submit'
+              content='Pridėti naują'
+              className='form-button'
+            />
           </StyledFormContainer>
-          <Button
-            type='submit'
-            mode='light'
-            content='Pridėti naują'
-            className='form-button'
-          />
         </form>
       </StyledWrapper>
     </Modal>
