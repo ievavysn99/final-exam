@@ -1,14 +1,27 @@
-const fetchUserData = async () => {
+import axios from 'axios';
+import { IUser } from '../../../server/src/models/user.model';
+
+export const fetchUserData = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/users');
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-    const userData = await response.json();
-    return userData;
+    const response = await axios.get('http://localhost:5000/api/users');
+    return response.data;
   } catch (error) {
     console.error('Error:', error);
-    return []; // Return an empty array or handle the error as needed
+    return [];
+  }
+};
+
+export const updateUser = async (userId: string, updatedUser: IUser) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:5000/api/users/${userId}`,
+      updatedUser
+    );
+    console.log('User updated successfully');
+    return response.data;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    throw error;
   }
 };
 
