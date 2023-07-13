@@ -13,6 +13,7 @@ import Button from '../atoms/Button';
 
 const Home = () => {
   const [data, setData] = useState<IUser[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [showForm, setShowForm] = useState(false);
@@ -41,6 +42,33 @@ const Home = () => {
 
     fetchData();
   }, []);
+
+  // const handleUserSearch = async (value: string) => {
+  //   setSearchValue(value);
+  //   setData(await fetchUserData());
+  //   const filteredData = data.filter(
+  //     (user) =>
+  //       user.name.toLowerCase().includes(value.toLowerCase()) ||
+  //       String(user.surname).includes(value.toLowerCase()) ||
+  //       String(user.age).includes(value.toLowerCase()) ||
+  //       String(user.email).includes(value.toLowerCase())
+  //   );
+  //   console.log(filteredData, 'filteredData');
+  //   setData(filteredData);
+  // };
+
+  const handleUserSearch = async (value: string) => {
+    setSearchValue(value);
+    const fetchedData = await fetchUserData();
+    const filteredData = fetchedData.filter(
+      (user: IUser) =>
+        user.name.toLowerCase().includes(value.toLowerCase()) ||
+        String(user.surname).includes(value.toLowerCase()) ||
+        String(user.age).includes(value.toLowerCase()) ||
+        String(user.email).includes(value.toLowerCase())
+    );
+    setData(filteredData);
+  };
 
   //nustato, kuris page parinktas
   const handlePageChange = (page: number) => {
@@ -85,7 +113,11 @@ const Home = () => {
   return (
     <>
       {/* headeris handlina showform, ar rodys add user formą paspaudus ant mygtuko */}
-      <Header setShowForm={handleShowForm} />
+      <Header
+        setShowForm={handleShowForm}
+        searchUsers={handleUserSearch}
+        value={searchValue}
+      />
       <StyledPage>
         {/* Jeigu show form yra true, tai rodo modalą su forma */}
         {showForm && (
