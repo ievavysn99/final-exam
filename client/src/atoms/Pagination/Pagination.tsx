@@ -16,9 +16,7 @@ const Pagination = ({
   onPageChange,
 }: IPaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1);
-
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-  console.log(totalItems, 'total items');
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     onPageChange(page);
@@ -54,7 +52,7 @@ const Pagination = ({
 
       if (startPage > 2) {
         paginationNumbers.push(
-          <StyledPaginationButton>
+          <StyledPaginationButton key={'.1'}>
             <a href='#'>...</a>
           </StyledPaginationButton>
         );
@@ -76,7 +74,7 @@ const Pagination = ({
     if (endPage < totalPages) {
       if (endPage < totalPages - 1) {
         paginationNumbers.push(
-          <StyledPaginationButton>
+          <StyledPaginationButton key={'.2'}>
             <a href='#'>...</a>
           </StyledPaginationButton>
         );
@@ -100,6 +98,7 @@ const Pagination = ({
     <StyledPaginationContainer className='pagination'>
       {currentPage !== 1 && (
         <StyledPaginationButton
+          key={'left'}
           className={`pagination-item ${currentPage === 1 ? 'disabled' : ''}`}
           onClick={() => handlePageChange(currentPage - 1)}
         >
@@ -112,6 +111,7 @@ const Pagination = ({
       {renderPaginationNumbers()}
       {currentPage !== totalPages && (
         <StyledPaginationButton
+          key={'right'}
           className={`pagination-item ${
             currentPage === totalPages ? 'disabled' : ''
           }`}

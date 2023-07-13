@@ -26,6 +26,14 @@ const Home = () => {
     setShowForm(value);
   };
 
+  const handleCloseForm = async () => {
+    const updatedData = await fetchUserData();
+    setData(updatedData);
+    handleShowForm(false);
+    setTotalItems(updatedData.length);
+    console.log(totalItems);
+  };
+
   //pafetchina data iš API
   useEffect(() => {
     const fetchData = async () => {
@@ -42,20 +50,6 @@ const Home = () => {
 
     fetchData();
   }, []);
-
-  // const handleUserSearch = async (value: string) => {
-  //   setSearchValue(value);
-  //   setData(await fetchUserData());
-  //   const filteredData = data.filter(
-  //     (user) =>
-  //       user.name.toLowerCase().includes(value.toLowerCase()) ||
-  //       String(user.surname).includes(value.toLowerCase()) ||
-  //       String(user.age).includes(value.toLowerCase()) ||
-  //       String(user.email).includes(value.toLowerCase())
-  //   );
-  //   console.log(filteredData, 'filteredData');
-  //   setData(filteredData);
-  // };
 
   const handleUserSearch = async (value: string) => {
     setSearchValue(value);
@@ -87,7 +81,7 @@ const Home = () => {
     }
   };
 
-  //deletina userį irgi su delete requestu iš API, kaip ir PUT 51 eilutėj
+  //deletina userį irgi su delete requestu iš API, kaip ir PUT 67 eilutėj
   const handleDeleteUser = async (userId: string) => {
     try {
       await deleteUser(userId);
@@ -123,7 +117,7 @@ const Home = () => {
         {showForm && (
           <Modal>
             <div ref={formContainerRef}>
-              <FormContainer onCancel={() => handleShowForm(false)} />
+              <FormContainer onCancel={handleCloseForm} />
             </div>
           </Modal>
         )}

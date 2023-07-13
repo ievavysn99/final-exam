@@ -17,7 +17,6 @@ export const updateUser = async (userId: string, updatedUser: IUser) => {
       `http://localhost:5000/api/users/${userId}`,
       updatedUser
     );
-    console.log('User updated successfully');
     return response.data;
   } catch (error) {
     console.error('Error updating user:', error);
@@ -30,7 +29,6 @@ export const deleteUser = async (userId: string) => {
     const response = await axios.delete(
       `http://localhost:5000/api/users/${userId}`
     );
-    console.log('User deleted successfully');
     return response.data;
   } catch (error) {
     console.error('Error deleting user:', error);
