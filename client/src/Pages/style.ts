@@ -23,7 +23,7 @@ export const StyledTableContainer = styled.div`
   /* background-color: var(--primary-color); */
   width: 90%;
   max-width: 1100px;
-  min-height: 435px;
-  padding: 30px 5px;
+  height: 500px;
+  padding: 5px;
   border-radius: 35px;
 `;
