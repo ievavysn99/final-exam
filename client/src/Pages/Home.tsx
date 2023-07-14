@@ -38,9 +38,7 @@ const Home = () => {
         const userData = await fetchUserData();
         setData(userData);
         setTotalItems(userData.length);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -57,6 +55,8 @@ const Home = () => {
         String(user.email).includes(value.toLowerCase())
     );
     setData(filteredData);
+    setTotalItems(filteredData.length);
+    totalItems > 0 ? setCurrentPage(1) : setCurrentPage(0);
   };
 
   const handlePageChange = (page: number) => {
@@ -68,9 +68,7 @@ const Home = () => {
       await updateUser(userId, updatedUser);
       const updatedData = await fetchUserData();
       setData(updatedData);
-    } catch (error) {
-      console.error('Error updating user:', error);
-    }
+    } catch (error) {}
   };
 
   const handleDeleteUser = async (userId: string) => {
@@ -80,9 +78,7 @@ const Home = () => {
       setData(updatedData);
       setDeletedUser(true);
       setTotalItems(updatedData.length);
-    } catch (error) {
-      console.error('Error updating user:', error);
-    }
+    } catch (error) {}
   };
 
   const closeDeletedUserModal = () => {
@@ -115,16 +111,23 @@ const Home = () => {
           </Modal>
         )}
         <StyledTableContainer>
-          <TableHeading></TableHeading>
-          <TableRow
-            data={data.slice(
-              (currentPage - 1) * itemsPerPage,
-              currentPage * itemsPerPage
-            )}
-            onEditUser={handleEditUser}
-            onDeleteUser={handleDeleteUser}
-          />
+          {data.length > 0 ? (
+            <>
+              <TableHeading />
+              <TableRow
+                data={data.slice(
+                  (currentPage - 1) * itemsPerPage,
+                  currentPage * itemsPerPage
+                )}
+                onEditUser={handleEditUser}
+                onDeleteUser={handleDeleteUser}
+              />
+            </>
+          ) : (
+            <h3>Vartotojų nerasta</h3>
+          )}
         </StyledTableContainer>
+
         <Pagination
           totalItems={totalItems}
           itemsPerPage={itemsPerPage}

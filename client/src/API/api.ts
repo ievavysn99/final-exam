@@ -5,10 +5,20 @@ export const fetchUserData = async () => {
   try {
     const response = await axios.get('http://localhost:5000/api/users');
     return response.data;
-  } catch (error) {
-    console.error('Error:', error);
-    return [];
-  }
+  } catch (error) {}
+};
+
+interface IFormData {
+  name: string;
+  surname: string;
+  email: string;
+  age: number;
+}
+
+export const addUser = async (formData: IFormData) => {
+  try {
+    await axios.post('http://localhost:5000/api/users', formData);
+  } catch (error) {}
 };
 
 export const updateUser = async (userId: string, updatedUser: IUser) => {
@@ -18,10 +28,7 @@ export const updateUser = async (userId: string, updatedUser: IUser) => {
       updatedUser
     );
     return response.data;
-  } catch (error) {
-    console.error('Error updating user:', error);
-    throw error;
-  }
+  } catch (error) {}
 };
 
 export const deleteUser = async (userId: string) => {
@@ -30,8 +37,5 @@ export const deleteUser = async (userId: string) => {
       `http://localhost:5000/api/users/${userId}`
     );
     return response.data;
-  } catch (error) {
-    console.error('Error deleting user:', error);
-    throw error;
-  }
+  } catch (error) {}
 };

@@ -8,6 +8,7 @@ import {
   StyledWrapper,
 } from './style';
 import Input from '../../atoms/Input';
+import { addUser } from '../../API/api';
 
 interface IAddFormContainerProps {
   onCancel: () => void;
@@ -22,7 +23,21 @@ const AddFormContainer = ({ onCancel }: IAddFormContainerProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const formData = {
+      name,
+      surname,
+      email,
+      age: parseInt(age),
+    };
+
+    addUser(formData);
     setSubmitted(true);
+
+    setName('');
+    setSurname('');
+    setEmail('');
+    setAge('');
   };
 
   const handleCancel = () => {
