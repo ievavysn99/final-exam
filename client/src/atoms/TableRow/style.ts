@@ -30,8 +30,8 @@ export const StyledRowContainer = styled.div`
   justify-content: center;
   text-align: left;
   font-size: 1rem;
-  color: #212529;
-  border-bottom: 1px solid #dee2e6;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--table-border);
   margin: 10px 0;
 
   &:last-child: {
@@ -75,7 +75,7 @@ export const StyledDeleteButtonContainer = styled.div`
 `;
 
 export const StyledEditable = styled.div`
-  background-color: #eee;
+  background-color: var(--editable-color);
   &:focus {
     outline: none;
   }

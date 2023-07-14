@@ -8,15 +8,15 @@ export const StyledPaginationButton = styled.li`
     position: relative;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
-    color: #6ea8fe;
+    color: var(--pagination-text-color);
     text-decoration: none;
-    border-right: 1px solid #495057;
+    border-right: 1px solid var(--pagination-border-color);
   }
 
   &.active {
-    background-color: #0d6efd;
+    background-color: var(--main-button-color);
     a {
-      color: #fff;
+      color: var(--button-text-color);
     }
   }
 
@@ -29,7 +29,7 @@ export const StyledPaginationButton = styled.li`
 
 export const StyledPaginationContainer = styled.ul`
   display: flex;
-  border: 1px solid #495057;
+  border: 1px solid var(--pagination-border-color);
   border-radius: 0.375rem;
   padding-inline-start: 0;
   overflow: hidden;

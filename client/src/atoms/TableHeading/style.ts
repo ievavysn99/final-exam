@@ -6,8 +6,8 @@ export const StyledHeadingContainer = styled.div`
   @media (min-width: 700px) {
     display: flex;
 
-    border-top: 1px solid #dee2e6;
-    border-bottom: 3px solid #dee2e6;
+    border-top: 1px solid var(--table-border);
+    border-bottom: 3px solid var(--table-border);
 
     div {
       display: grid;
@@ -16,10 +16,9 @@ export const StyledHeadingContainer = styled.div`
       h3 {
         padding: 0.75rem;
         width: 70%;
-        color: #212529;
+        color: var(--text-color);
         font-size: 1rem;
         font-weight: bold;
-        line-height: 1.5;
         text-align: left;
       }
     }

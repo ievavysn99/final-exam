@@ -3,10 +3,34 @@
 :root {
   font-family: 'Roboto Mono', monospace;
   line-height: 1.5;
-  --primary-color: #0e8ae8;
-  --hf-color: #21c1a9;
-  --secondary-color: #fff;
-  --selected-button-color: #0944a3;
-  --text-color: #fff;
-  --hover-color: #4167d0;
+
+  /* Button Colors */
+  --main-button-color: #0d6efd;
+  --button-text-color: #fff;
+  --button-cancel: #6c757d;
+  --button-success: #28a745;
+  --button-danger: #dc3545;
+
+  /* Button Hover Colors */
+  --button-hover: #0b5ed7;
+  --button-cancel-hover: #343a40;
+  --button-success-hover: #218838;
+  --button-danger-hover: #c82333;
+
+  /* Input and Search */
+  --input-border: #ced4da;
+  --search-text-color: #495057;
+
+  /* Pagination */
+  --pagination-text-color: #6ea8fe;
+  --pagination-border-color: #495057;
+
+  /* Text */
+  --text-color: #212529;
+
+  /* Table */
+  --table-border: #dee2e6;
+
+  /* Editable */
+  --editable-color: #eee;
 }
