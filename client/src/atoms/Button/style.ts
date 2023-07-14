@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  background-color: #0d6efd;
-  color: #fff;
+  background-color: var(--main-button-color);
+  color: var(--button-text-color);
   border: none;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -19,30 +19,30 @@ export const StyledButton = styled.button`
   }
 
   &.cancel {
-    background-color: #6c757d;
+    background-color: var(--button-cancel);
   }
 
   &.success {
-    background-color: #28a745;
+    background-color: var(--button-success);
   }
 
   &.danger {
-    background-color: #dc3545;
+    background-color: var(--button-danger);
   }
 
   &:hover {
-    background-color: #0b5ed7;
+    background-color: var(--button-hover);
 
     &.cancel {
-      background-color: #343a40;
+      background-color: var(--button-cancel-hover);
     }
 
     &.success {
-      background-color: #218838;
+      background-color: var(--button-success-hover);
     }
 
     &.danger {
-      background-color: #c82333;
+      background-color: var(--button-danger-hover);
     }
   }
 `;

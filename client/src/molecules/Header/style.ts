@@ -5,8 +5,7 @@ export const StyledHeader = styled.header`
   padding: 20px 10px;
   display: flex;
   align-items: center;
-  color: #212529;
-
+  color: var(--text-color);
   div {
     width: 90%;
     max-width: 1100px;

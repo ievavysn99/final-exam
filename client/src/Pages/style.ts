@@ -20,7 +20,6 @@ export const StyledPage = styled.div`
 `;
 
 export const StyledTableContainer = styled.div`
-  /* background-color: var(--primary-color); */
   width: 90%;
   max-width: 1100px;
   min-height: 500px;
