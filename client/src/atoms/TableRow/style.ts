@@ -5,12 +5,14 @@ export const StyledContainer = styled.div``;
 export const StyledRowInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   @media (min-width: 700px) {
     margin: 0.75rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
     width: 70%;
+    text-align: left;
 
     div {
       margin: 0.75rem;
@@ -30,6 +32,7 @@ export const StyledRowContainer = styled.div`
   font-size: 1rem;
   color: #212529;
   border-bottom: 1px solid #dee2e6;
+  margin: 10px 0;
 
   &:last-child: {
     border-bottom: none;
@@ -42,6 +45,7 @@ export const StyledRowContainer = styled.div`
   }
 
   @media (min-width: 700px) {
+    margin: 0;
     flex-direction: row;
     justify-content: center;
 
