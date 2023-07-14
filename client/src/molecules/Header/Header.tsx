@@ -30,6 +30,7 @@ const Header = ({ setShowForm, searchUsers, value }: IHeaderProps) => {
           value={searchValue}
           placeholder='Search'
           onChange={handleSearch}
+          className='search'
         ></Input>
         <Button
           content='Pridėti naują'

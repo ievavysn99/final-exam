@@ -9,4 +9,8 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  &.search {
+    font-size: 1rem;
+  }
 `;

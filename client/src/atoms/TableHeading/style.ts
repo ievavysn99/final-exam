@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 export const StyledHeadingContainer = styled.div`
   display: none;
 
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     display: flex;
 
     border-top: 1px solid #dee2e6;

@@ -6,7 +6,7 @@ export const StyledRowInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     margin: 0.75rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
@@ -41,7 +41,7 @@ export const StyledRowContainer = styled.div`
     margin: 5px;
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     flex-direction: row;
     justify-content: center;
 
@@ -52,10 +52,10 @@ export const StyledRowContainer = styled.div`
 `;
 
 export const StyledButtonContainer = styled.div`
-  @media (min-width: 600px) {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  @media (min-width: 700px) {
     width: 30%;
   }
 `;

@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const StyledHeader = styled.header`
-  height: 40px;
-  padding: 10px;
+  height: 60px;
+  padding: 20px 10px;
   display: flex;
   align-items: center;
   color: #212529;
@@ -11,12 +11,23 @@ export const StyledHeader = styled.header`
     width: 90%;
     max-width: 1100px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
     margin: 0 auto;
+    input {
+      width: 100%;
+    }
+  }
 
-    h1 {
-      color: #212529;
+  @media (min-width: 602px) {
+    height: 40px;
+    div {
+      flex-direction: row;
+      justify-content: space-between;
+      input {
+        width: 70%;
+      }
     }
   }
 `;
