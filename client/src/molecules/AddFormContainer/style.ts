@@ -5,8 +5,13 @@ export const StyledWrapper = styled.div`
 `;
 export const StyledFormContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
+
+  @media (min-width: 485px) {
+    margin: 0;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const StyledFormItem = styled.div`
