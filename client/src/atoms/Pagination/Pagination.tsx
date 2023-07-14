@@ -41,11 +41,7 @@ const Pagination = ({
 
     if (startPage > 1) {
       paginationNumbers.push(
-        <StyledPaginationButton
-          key={1}
-          className={currentPage === 1 ? 'active' : ''}
-          onClick={() => handlePageChange(1)}
-        >
+        <StyledPaginationButton key={1} onClick={() => handlePageChange(1)}>
           <a href='#'>1</a>
         </StyledPaginationButton>
       );
@@ -93,6 +89,10 @@ const Pagination = ({
 
     return paginationNumbers;
   };
+
+  if (currentPage === 0) {
+    return <></>;
+  }
 
   return (
     <StyledPaginationContainer className='pagination'>

@@ -3,12 +3,11 @@ import { ModalWrapper, ModalContainer } from './style';
 
 interface IModalProps {
   children: ReactNode;
-  onClick?: (e: MouseEvent) => void;
 }
 
-const Modal = ({ children, onClick }: IModalProps) => {
+const Modal = ({ children }: IModalProps) => {
   return (
-    <ModalWrapper onClick={onClick}>
+    <ModalWrapper>
       <ModalContainer>{children}</ModalContainer>
     </ModalWrapper>
   );

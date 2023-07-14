@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import Button from '../../atoms/Button';
 import Modal from '../../atoms/Modal/Modal';
 import {
@@ -9,6 +8,7 @@ import {
   StyledWrapper,
 } from './style';
 import Input from '../../atoms/Input';
+import { addUser } from '../../API/api';
 
 interface IAddFormContainerProps {
   onCancel: () => void;
@@ -31,21 +31,8 @@ const AddFormContainer = ({ onCancel }: IAddFormContainerProps) => {
       age: parseInt(age),
     };
 
-    try {
-      const response = await axios.post(
-        'http://localhost:5000/api/users',
-        formData
-      );
-      if (response.status === 201) {
-        setSubmitted(true);
-      } else {
-        // User was not saved
-        console.log('User is not saved');
-      }
-    } catch (error) {
-      // Error occurred
-      console.error('Error:', error);
-    }
+    addUser(formData);
+    setSubmitted(true);
 
     setName('');
     setSurname('');

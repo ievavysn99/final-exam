@@ -35,33 +35,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importDefault(require("mongoose"));
-var dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
-var dbConnection = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var connected, error_1;
+var mongoose = require('mongoose');
+require('dotenv').config();
+(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var connection, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
-                if (!process.env.MONGODB_URI) return [3 /*break*/, 2];
-                return [4 /*yield*/, mongoose_1.default.connect(process.env.MONGODB_URI)];
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, mongoose.connect(process.env.MONGODB_URI)];
             case 1:
-                connected = _a.sent();
-                if (connected) {
+                connection = _a.sent();
+                if (connection) {
                     console.log('Connected to MongoDB');
                 }
-                _a.label = 2;
-            case 2: return [3 /*break*/, 4];
-            case 3:
+                return [3 /*break*/, 3];
+            case 2:
                 error_1 = _a.sent();
-                throw new Error('Failed to connect to MongoDB');
-            case 4: return [2 /*return*/];
+                console.log(error_1);
+                process.exit(1);
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
-}); };
-exports.default = dbConnection;
+}); })();
