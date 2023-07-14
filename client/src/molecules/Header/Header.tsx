@@ -28,7 +28,7 @@ const Header = ({ setShowForm, searchUsers, value }: IHeaderProps) => {
         <Input
           type='text'
           value={searchValue}
-          placeholder='Search'
+          placeholder='Ieškoti dalyvių'
           onChange={handleSearch}
           className='search'
         ></Input>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import Button from '../../atoms/Button';
 import Modal from '../../atoms/Modal/Modal';
 import {
@@ -23,34 +22,7 @@ const AddFormContainer = ({ onCancel }: IAddFormContainerProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const formData = {
-      name,
-      surname,
-      email,
-      age: parseInt(age),
-    };
-
-    try {
-      const response = await axios.post(
-        'http://localhost:5000/api/users',
-        formData
-      );
-      if (response.status === 201) {
-        setSubmitted(true);
-      } else {
-        // User was not saved
-        console.log('User is not saved');
-      }
-    } catch (error) {
-      // Error occurred
-      console.error('Error:', error);
-    }
-
-    setName('');
-    setSurname('');
-    setEmail('');
-    setAge('');
+    setSubmitted(true);
   };
 
   const handleCancel = () => {
